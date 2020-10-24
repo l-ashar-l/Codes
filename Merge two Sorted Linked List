@@ -1,0 +1,52 @@
+ListNode* mergeTwoLists(ListNode* l1, ListNode* l2) {
+        
+        if(l1 == NULL) return l2;
+        if(l2 == NULL) return l1;
+        
+        
+        ListNode *sorting;
+        ListNode *header_sorting;
+        if(l1 && l2){
+            
+            if(l1->val < l2->val){
+                sorting = l1;
+                l1 = l1->next;
+            }
+            else{
+                sorting = l2;
+                l2 = l2 -> next;
+            }
+            
+            if(l1==NULL)
+                sorting -> next = l2;
+            if(l2==NULL)
+                sorting -> next = l1;
+            
+        }
+            header_sorting = sorting;
+        
+        while(l1 && l2){
+            
+            if(l1->val <= l2->val){
+                
+                sorting->next = l1;
+                sorting = l1;
+                l1 = l1->next;
+            }
+            
+            else{
+                
+                sorting -> next = l2;
+                sorting = l2;
+                l2 = l2->next;
+            }
+            
+            if(l1==NULL)
+                sorting -> next = l2;
+            if(l2==NULL)
+                sorting -> next = l1;
+            
+        }
+        
+        return header_sorting;
+    }
