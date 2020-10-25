@@ -1,3 +1,12 @@
+/*
+   int stoi (const string&  str, [size_t* idx], [int base]); 
+   
+   >const string& str is an input string.    -  string name
+   >size_t* idx is an optional parameter (pointer to the object whose value is set by the function), it's default value is 0 or we can assign it to nullptr.  -  starting index
+   >int base is also an optional parameter, its default is 10.    - base 2 for binary
+   It specifies the radix to determine the value type of input string (2 for binary, 8 for octal, 10 for decimal and 16 for hexadecimal).
+
+*/ 
  int binary_to_int(string x){
             int integer = stoi(x,0,2);        
         return integer;
