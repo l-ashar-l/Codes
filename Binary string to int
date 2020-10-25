@@ -1,0 +1,4 @@
+ int binary_to_int(string x){
+            int integer = stoi(x,0,2);        
+        return integer;
+    }
