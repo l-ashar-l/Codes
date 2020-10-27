@@ -1,0 +1,156 @@
+string addBinary(string st, string stt) {
+        
+        if(st.empty())
+			return stt;
+		if(stt.empty())
+			return st;
+
+		/////////////   For size = 1 ///////////////////////
+
+		if(st.size()==1 && stt.size()==1){
+
+			if(st[0]=='1' && stt[0]=='1')
+				return "10";
+			if(st[0] == '1'  || stt[0]=='1')
+				return "1";
+			else
+				return "0";
+						
+		}
+
+		 ////////////////  For Same size ///////////////////
+
+		bool carry = 0;
+
+		if(st.size()==stt.size()){
+
+			string total = st;
+
+			for(int i=st.size()-1; i>=0; --i){
+
+				if(st[i] == '0' && stt[i] == '0'){
+
+					total[i] = '0';
+
+					if(carry == 1){
+						total[i] = '1';
+						carry = 0;
+					}
+					continue;
+				}
+
+				else if((st[i] == '1' && stt[i] == '0') || (st[i] == '0' && stt[i] == '1')){
+
+
+					if(carry == 1){
+						total[i] = '0';
+						carry = 1;
+					}
+					else{	
+						total[i] = '1';
+ 						carry = 0;
+ 					}
+ 					continue;
+				}
+			
+				else if(st[i] == '1' && stt[i] == '1'){
+
+					total[i] = '0';
+					if(carry ==1)
+						total[i] = '1';
+
+					carry = 1;
+				}
+
+
+			}
+
+			if(carry == 1)
+				total = '1' + total;
+
+			return total;
+		}
+
+
+		/////////// For different Sizes //////////////////
+
+		int greater,smaller;
+		string greater_bin, smaller_bin;
+
+		if(st.size()>stt.size()){
+
+			greater = st.size();
+			greater_bin = st;
+		
+			smaller = stt.size();
+			smaller_bin = stt;
+
+		}
+
+		else{
+
+			greater = st.size();
+			greater_bin = st;
+		
+			smaller = stt.size();
+			smaller_bin = stt;
+
+		}
+
+		string temp = "";
+
+		int t = greater;
+		
+		while(t>smaller)
+			t--;
+
+		string end ="";
+		 end = greater_bin.substr(t, greater);
+
+		greater = t;
+
+		string total = smaller_bin;
+
+		for(int i=greater; i>=0; --i){
+
+			if(greater_bin[i] == '0' && smaller_bin[i] == '0'){
+
+					total[i] = '0';
+
+					if(carry == 1){
+						total[i] = '1';
+						carry = 0;
+					}
+					continue;
+				}
+
+				else if((greater_bin[i] == '1' && smaller_bin[i] == '0') || (greater_bin[i] == '0' && greater_bin[i] == '1')){
+
+					if(carry == 1){
+						total[i] = '0';
+						carry = 1;
+					}
+					else{	
+						total[i] = '1';
+ 						carry = 0;
+ 					}
+ 					continue;
+				}
+			
+			else if(greater_bin[i] == '1' && smaller_bin[i] == '1'){
+
+					total[i] = '0';
+					if(carry ==1)
+						total[i] = '1';
+
+					carry = 1;
+				}
+			}
+
+      if(carry == 1)
+				total = '1' + total;
+        
+			total = total+end;
+      
+		return total;
+    }
