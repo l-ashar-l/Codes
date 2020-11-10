@@ -1,0 +1,22 @@
+vector<int>prime_sieve(){
+
+  vector<bool> marked(100000,0);
+	  marked[2] = 1;
+	  marked[0] = marked[1] = 0;
+
+	  for(ll i=3; i<=100000; i+=2)
+		  marked[i] = 1;	
+	
+  //Siever
+	  for(ll i=3; i<=100000; i+=2){
+
+	// if current i not marked, push, mark it and multiples
+	  	
+          if(marked[i]==1){
+		          for(ll j=i*i; j<=100000; j+=2){
+			          if(j%i==0)
+				          marked[j] = 0;
+			       }
+		      }
+	  }
+}
