@@ -2,6 +2,8 @@
 
 > The **12-Factor App methodology** is a methodology for building SaaS ( "Software as a service") applications. These best practices are designed to enable applications to be built with portability and resilience when deployed to the web.
 
+<br />
+
 ## The 12 Factors
 
 1. *Codebase:* 
